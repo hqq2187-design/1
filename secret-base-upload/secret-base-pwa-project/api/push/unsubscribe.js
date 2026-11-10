@@ -1,0 +1,2 @@
+const crypto=require('crypto');const {redis,json}=require('../_push');
+module.exports=async(req,res)=>{if(req.method!=='POST')return json(res,405,{error:'Method not allowed'});try{const endpoint=req.body?.endpoint;if(!endpoint)return json(res,400,{error:'Missing endpoint'});const id=crypto.createHash('sha256').update(endpoint).digest('hex');await redis().del('sb:push:'+id);return json(res,200,{ok:true});}catch(e){return json(res,500,{error:e.message||'取消订阅失败'});}};

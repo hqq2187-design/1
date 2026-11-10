@@ -1,0 +1,1 @@
+const {json}=require('../_push');module.exports=(req,res)=>{if(req.method!=='GET')return json(res,405,{error:'Method not allowed'});if(!process.env.VAPID_PUBLIC_KEY)return json(res,503,{error:'VAPID_PUBLIC_KEY 未配置'});return json(res,200,{publicKey:process.env.VAPID_PUBLIC_KEY});};
