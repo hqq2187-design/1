@@ -1,0 +1,36 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/push/config"
+  to = "/.netlify/functions/push-config"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/push/subscribe"
+  to = "/.netlify/functions/push-subscribe"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/push/unsubscribe"
+  to = "/.netlify/functions/push-unsubscribe"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/push/status"
+  to = "/.netlify/functions/push-status"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/cron/role-messages"
+  to = "/.netlify/functions/role-messages-http"
+  status = 200
+  force = true
